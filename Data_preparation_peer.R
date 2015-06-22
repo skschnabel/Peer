@@ -3,17 +3,37 @@
 
 setwd("D:/Ausgelagert/PeerAppel/")
 
+options(java.parameters = "-Xmx1024m") #options( java.parameters = "-Xmx4g" )
 library(XLConnect)
 
+meta.peer <- loadWorkbook("Peer_Final_Data_Combined_v1.xlsx")
 
-# meta.wb <- loadWorkbook("Additional Information_Marta_new.xlsx")
-# 
-# meta.data <- readWorksheet(meta.wb, sheet = "info", header = TRUE)
-# 
-# 
-# wb.va <- loadWorkbook(filename="data avocados total.xlsx")
-data.av <- read.table("data_avocados_total_noNIR.csv", sep=",", skip=2, header=TRUE)
+data.peer <- read.table("Peer_Final_Data_Combined_v1_no_meta.csv", sep=",", skip=3, header=TRUE)
 
-head(data.av)
+grep("b.avg.", colnames(data.peer))#210
+grep("opmerk", colnames(data.peer))#717
 
-table(data.av$Firm_acou)
+data.peer.no.met <- data.peer[grep("Conf",data.peer$prod),c(1:210, 717)]
+
+replications(data.peer.no.met[,1:6])
+
+data.peer.no.met$herkomst[which(data.peer.no.met$herkomst=="l")] <- "L"
+
+data.cl <- droplevels.data.frame(data.peer.no.met)
+
+replications(data.cl[,1:6])
+
+hist(data.cl$penetro)
+barchart(table(data.cl$kleuri), col="darkgreen")
+
+par(mfrow=c(4,5))
+
+hh <- unique(data.cl$herkomst)
+
+for(i in 1:18){
+  hist(data.cl$penetr[data.cl$herk==hh[i]], main=paste(hh[i]), xlab="firmness")
+}
+  
+
+
+
