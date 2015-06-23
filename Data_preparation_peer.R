@@ -29,10 +29,23 @@ barchart(table(data.cl$kleuri), col="darkgreen")
 par(mfrow=c(4,5))
 
 hh <- unique(data.cl$herkomst)
+bb <- seq(4,9.5, by=0.5)
+
 
 for(i in 1:18){
-  hist(data.cl$penetr[data.cl$herk==hh[i]], main=paste(hh[i]), xlab="firmness")
+  hist(data.cl$penetr[data.cl$herk==hh[i]&data.cl$met=="na oogst"], main=paste(hh[i]), xlab="firmness", breaks=bb)
 }
+
+data.cl.harvest <- data.cl[data.cl$met=="na oogst",]
+
+pp <- ggplot(data=data.cl.harvest, aes(x=penetrometerwaarde))
+pp <- pp + geom_histogram(aes(fill=herkomst), binwidth=0.5, xlim=c(4.5,9.5))
+#pp <- pp + scale_fill_brewer()#palette="rainbow"
+pp <- pp + facet_wrap( ~ herkomst, ncol=4) #ncol=1
+pp  
+
+
+
   
 
 
