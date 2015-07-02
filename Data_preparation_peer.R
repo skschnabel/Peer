@@ -25,7 +25,10 @@ data.peer.no.met$herkomst[which(data.peer.no.met$herkomst=="l")] <- "L"
 
 data.cl <- droplevels.data.frame(data.peer.no.met)
 
-idint <- interaction(factor(data.cl$vrucht), data.cl$herkomst, factor(data.cl$batch), factor(data.cl$duplo))
+f.vrucht <- as.factor(data.cl$vrucht)
+
+idint <- interaction(factor(data.cl$vrucht.nr), data.cl$herkomst, factor(data.cl$batch), factor(data.cl$duplo))
+#4320 different levels==4320 different fruits?
 
 #data.cl is the data without metabolomics data but included the LBA(?) data
 

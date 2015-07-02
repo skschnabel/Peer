@@ -1,0 +1,68 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{color}
+
+%opening
+\title{Summary exploratory analysis Pear Data}
+\author{Sabine K. Schnabel, Biometris}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{General information about the data sets}
+
+\subsection*{Meta data}
+\begin{itemize}
+\item It is not yet for sure in how far we will use the meta data file at all.
+\item Excel table with information about the different orchards
+\item There are 18 orchards with partial information in the data set.
+\item The variables (with different degrees of information and variation): \texttt{boomvorm, boomleeftijd, onderstam, 
+	grondsoort, fractie afslibbaar, fertigatie, voeding N, voeding P, voeding K, wortelsnoei, behang (\%), 
+	commerciele pluk, pluk proef, CO2 prod.(ml/kg.uur), ethyleenproductie (μl/kg*h), \%droge stof, vrucht-Ca, vrucht-K, vrucht-K/Ca, vrucht-P, vrucht-Mg, vrucht-N}.
+\end{itemize}
+
+\subsection*{Large data set}
+\begin{itemize}
+\item Excel table with information on all measurement and indicators taken on the pears
+\item The table has the following information on fruit level:
+	\begin{itemize}
+		\item Basic information about the record: \newline 
+			\texttt{regel, vrucht nr, herkomst, product, batch, duplo, 	meetdatum, SmartFresh, \newline destructief/non-destructief, meting}
+		\item General measurement (repeated at different time points): \newline 
+			\texttt{kleurindex (1=groen-5=geel), \textcolor{red}{penetrometerwaarde/firmness}}
+		\item Measurements from the Pigment Analyzer: \newline
+			\texttt{NDVI -bloskant, NAI-bloskant, NDVI - groene zijde, NAI-groene zijde, NDVI-gemiddeld, NAI-gemiddeld}
+		\item Measurements from the DA-meter (non destructive chlorophyll-analyzer): \newline
+			\texttt{DA-index bloskant/red, DA-index groene zijde/green, DA-index gemiddeld, DA-indexblos-groen}
+		\item Measurements from the Aweta AFS Acoustic firmness sensor: \newline
+			\texttt{Stevigheid AFS-bloskant, M (g) bloskant, F0 bloskant, Stevigheid AFS-groene zijde, M (g) groene zijde, F0 groene zijde, Stevigheid AFS-gemiddeld, M (g) AFS \% verschil, F0 AFS-gemiddeld}
+		\item Underwater weighing to determine density: 
+			\texttt{vruchtgewicht(g), dichtheid(g/ml)}
+		\item \texttt{\textcolor{red}{\% droge stof, TSS (°Brix), zetmeelindex (1-10)}}
+		\item \texttt{\textcolor{cyan}{Schilvlekjes-score, Schilvlekjes index}}
+		\item China simulatie:
+			\texttt{rot, zwarte stelen index, hol\&bruin-score}	
+	\end{itemize} 
+\item Additional there is substantial information about LBA and Hue strata as well as a large amount of metabolomics 
+	measurements. The latter are at batch level while the former are on fruit level.
+\item A lot of the measurements are non-destructive (that incluedes the LBA/Hue measurements), but the most meaningful
+	measure \texttt{firmness} is destructive and also metabolomics and other measurements (\texttt{dry matter} etc.) result 
+	in the loss of the fruit.
+\end{itemize}
+
+\section*{Descriptive analysis of the data}
+
+\subsection*{Meta data}
+Since this data set is rather small and most information are only partial or do not contain enough variation, no 
+further descriptive analysis was done.
+
+\subsection*{Large data set}
+These data include information on Conference pears as well as Elstar apples. For the sake of this analysis I excluded 
+the apples from the data set. \newline
+The resulting data set has 8720 records and includes numerous columns (with basic information and phenoytpic 
+traits). To my understanding there are 4320 different pears in the data set. Since the most important measurement is 
+destructive at every measurement for firmness the measured fruits are sacrificed. The fruits are uniquely 
+identified through the fruit number, the orchard indication, the batch and duplo.  
+
+\end{document}
